@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organograma Corporativo</title>
+    <link rel="stylesheet" href="arquivos/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="header-modern-layout">
+        <div class="header-top-row">
+            <div class="header-brand">
+                <h1>Organograma Grupo Marista</h1>
+            </div>
+            <div class="header-logo-middle">
+                <img src="imagens/logo.png" alt="Logo da Empresa" class="site-logo">
+            </div>
+            <div class="header-main-actions">
+                <div class="filtro-nome-container">
+                    <input type="text" id="filtro-nome" placeholder="Buscar gestor..." autocomplete="off">
+                    <i class="fas fa-search search-icon"></i>
+                    <div id="suggestions" class="suggestions-container"></div>
+                </div>
+                <div class="file-input-wrapper">
+                    <label for="file-input" class="file-input-icon-label" title="Carregar Arquivo (XLSX ou CSV)">
+                        <i class="fas fa-file-upload"></i>
+                    </label>
+                    <input id="file-input" type="file" accept=".xlsx,.csv" />
+                    <div class="progress-bar">
+                        <div class="progress" id="progress-bar"></div>
+                    </div>
+                    <div id="error-message" class="error-message" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom-row">
+            <div class="header-legend">
+                <div class="legenda-item">
+                    <div class="legenda-color" style="background-color: var(--cor-corporativo);"></div>
+                    <span>CORPORATIVO</span>
+                </div>
+                <div class="legenda-item">
+                    <div class="legenda-color" style="background-color: var(--cor-saude);"></div>
+                    <span>SAÚDE</span>
+                </div>
+                <div class="legenda-item">
+                    <div class="legenda-color" style="background-color: var(--cor-pucpr);"></div>
+                    <span>PUCPR</span>
+                </div>
+                <div class="legenda-item">
+                    <div class="legenda-color" style="background-color: var(--cor-cmdi);"></div>
+                    <span>CMDI</span>
+                </div>
+                <div class="legenda-item">
+                    <div class="legenda-color" style="background-color: var(--cor-ftd);"></div>
+                    <span>FTD</span>
+                </div>
+            </div>
+            <div class="header-organogram-controls">
+                <button id="zoom-in" title="Aumentar Zoom"><i class="fas fa-plus"></i></button>
+                <button id="zoom-out" title="Diminuir Zoom"><i class="fas fa-minus"></i></button>
+                <button id="reset-view" title="Redefinir visualização"><i class="fas fa-sync-alt"></i> Resetar</button>
+                <button id="capturar-organograma" title="Capturar imagem do organograma"><i class="fas fa-camera"></i>
+                    Capturar</button>
+                <button id="btn-abrir-popup" title="Ver lista de chefias"><i class="fas fa-users"></i> Chefias</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loading-message" class="loading" style="display: none;">
+            Processando dados, por favor aguarde...
+            <div id="progress-text">0%</div>
+        </div>
+        <div class="tree" id="organograma"></div>
+    </div>
+
+    <div id="popup-chefias" class="popup-container" style="display: none;">
+        <div class="popup-content">
+            <span class="popup-close" id="popup-close">&times;</span>
+            <h2>Chefias e Subordinados</h2>
+
+            <div class="popup-filters">
+                <input type="text" id="filtro-popup-nome" placeholder="Filtrar por nome do chefe...">
+                <input type="number" id="filtro-popup-quantidade" placeholder="Nº exato de subordinados...">
+                <select id="filtro-popup-area">
+                    <option value="">Todas as Áreas</option>
+                    <option value="CORPORATIVO">CORPORATIVO</option>
+                    <option value="SAÚDE">SAÚDE</option>
+                    <option value="PUCPR">PUCPR</option>
+                    <option value="CMDI">CMDI</option>
+                    <option value="FTD">FTD</option>
+                </select>
+            </div>
+
+            <div class="chefias-list">
+                <ul id="lista-chefias"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="arquivos/script.js"></script>
+</body>
+
+</html>

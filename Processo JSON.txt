@@ -1,0 +1,9 @@
+> Carregar o organograma, com uma arquivo de backup, como fazia no processo antigo
+> Após ele "carregar" normalmente, apertar Ctrl + Alt + i 
+> Ir em Console, na tela de ferramentas do desenvolvedor
+> Digitar o código abaixo - É PRECISO DIGITAR, NÃO É POSSÍVEL COPIAR E COLAR
+ 
+JSON.stringify(dados, null, 2)
+ 
+>Rolar a tela e ir em "mais", clicar com o direito do mouse e "Copiar conteúdo da cadeia de caracteres"
+
